@@ -22,4 +22,4 @@ def modules(request):
 
 def register(request): 
 
-  return render(request, 'studentApp/modules.html', {'title': 'register'})
+  return render(request, 'studentApp/register.html', {'title': 'register'})
