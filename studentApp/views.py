@@ -23,3 +23,13 @@ def modules(request):
 def register(request): 
 
   return render(request, 'studentApp/register.html', {'title': 'register'})
+
+def status(request):
+    # Get all reported issues
+    Courses = Course.objects.all()
+
+    # Create a context dictionary to pass to the template
+    context = {'course': Course}
+
+    # Render the report.html template with the context
+    return render(request, 'studentApp/status.html', context)
