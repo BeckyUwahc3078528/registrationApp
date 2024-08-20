@@ -18,57 +18,57 @@
 <body>
     <div class="container">
         <header class="site-header">
-            <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <nav class="navbar custom-navbar navbar-expand-md navbar-dark bg-steel fixed-top">
                 <div class="container">
-                <a class="navbar-brand mr-4" href="{% url 'home' %}">Student IT Services</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-                        <!-- <a class="nav-item nav-link" href="{% url 'modules' %}">Modules</a> -->
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" 
-                                href="#"> Courses</a>
-                          
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'modules' %}">Business</a>
-                              <a class="dropdown-item" href="{% url 'modules' %}">Computing</a>
-                              <a class="dropdown-item" href="#">Engineering</a>
-                              <a class="dropdown-item" href="#">Medicine</a>
-                              <a class="dropdown-item" href="#">Art & History</a>
-                              
-                            </div>
-                          </div>
-                        <a class="nav-item nav-link" href="{% url 'contact' %}">Contact</a>
-                    </div>
-                    <!-- Navbar Right Side -->
-                    <div class="navbar-nav"> 
-
-                        {% if user.is_authenticated  %} 
-                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                            <a class="nav-item nav-link" href="{% url 'status' %}">View Status</a>
-                            <form method="post" id="frm_logout" action="{% url 'logout' %}">
-                                {% csrf_token %}
-                                <a class="nav-item nav-link" href="javascript:$('#frm_logout').submit();">Logout</a> 
-                            </form>
-                    
-                        {% else %} 
-                    
-                            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> 
+                    <a class="navbar-brand mr-4" href="{% url 'home' %}">Student IT Services</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                        aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <div class="navbar-nav mr-auto">
+                            <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+                            <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+                            <!-- <a class="nav-item nav-link" href="{% url 'modules' %}">Modules</a> -->
+                            <div class="dropdown">
+                                <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" 
+                                    href="#"> Courses</a>
                             
-                            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> 
-                    
-                        {% endif %} 
-                    
-                     
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'modules' %}">Business</a>
+                                <a class="dropdown-item" href="{% url 'modules' %}">Computing</a>
+                                <a class="dropdown-item" href="#">Engineering</a>
+                                <a class="dropdown-item" href="#">Medicine</a>
+                                <a class="dropdown-item" href="#">Art & History</a>
+                                
+                                </div>
+                            </div>
+                            <a class="nav-item nav-link" href="{% url 'contact' %}">Contact</a>
+                        </div>
+                        <!-- Navbar Right Side -->
+                        <div class="navbar-nav"> 
+
+                            {% if user.is_authenticated  %} 
+                                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                                <a class="nav-item nav-link" href="{% url 'status' %}">View Status</a>
+                                <form method="post" id="frm_logout" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <a class="nav-item nav-link" href="javascript:$('#frm_logout').submit();">Logout</a> 
+                                </form>
+                        
+                            {% else %} 
+                        
+                                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> 
+                                
+                                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> 
+                        
+                            {% endif %} 
+                        
+                        
+                        </div>
+                        
+                                            
                     </div>
-                    
-                                        
-                </div>
                 </div>
             </nav>
         </header>
@@ -96,6 +96,158 @@
             </div>
         </div>
     </div>
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container my-5">
+
+    <!-- Footer -->
+    <footer
+            class="text-center text-lg-start text-white"
+            style="background-color: #1c2331"
+            >
+      <!-- Section: Social media -->
+      <section
+               class="d-flex justify-content-between p-4"
+               style="background-color: #65a077"
+               >
+        <!-- Left -->
+        <div class="me-5">
+          <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+  
+        <!-- Right -->
+        <div>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">Grey Cloud College</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #cae7d3; height: 2px"
+                  />
+              <p>
+                Here you can use rows and columns to organize your footer
+                content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">How to apply</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #cae7d3; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white">Postgraduate study</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white">International students</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white">Fees and funding</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white">Higher and degree apprenticeships</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #cae7d3; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-white">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white">Undergraduate courses</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white">Online masters degrees</a>
+              </p>
+              <p>
+                <a href= "{% url 'contact' %}" class="text-white">Help</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #cae7d3; height: 2px"
+                  />
+              <p><i class="fas fa-home mr-3"></i> City Campus, Howard Street, Sheffield, S1 1WB, UK</p>
+              <p><i class="fas fa-envelope mr-3"></i> greycloud@example.com</p>
+              <p><i class="fas fa-phone mr-3"></i>  +44 (0)114 225 5555</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            
+
+
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+  
+      <!-- Copyright -->
+      <div
+           class="text-center p-3"
+           style="background-color: rgba(0, 0, 0, 0.2)"
+           >
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/"
+           >MDBootstrap.com</a
+          >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  
+  </div>
+  <!-- End of .container -->
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
