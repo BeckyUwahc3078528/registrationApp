@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
+from .models import Message
 
 # Create your views here.
 def home(request): 
@@ -26,12 +27,9 @@ def register(request):
 
 
 
- #def status(request):
-    # Get all reported issues
-     #Courses = Course.objects.all()
-
-    # Create a context dictionary to pass to the template
-     #context = {'course': Course}
-
-    # Render the report.html template with the context
-     #return render(request, 'studentApp/status.html', context)
+def enquiry(request):
+   # Get all reported issues
+  #Create a context dictionary to pass to the template
+  #Render the report.html template with the context
+  daily_enquiry = {'messages': Message.objects.all(), 'title': 'Enquiries Reported'}
+  return render(request, 'studentApp/enquiry.html', daily_enquiry)
