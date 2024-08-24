@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IT Enquiry Reported</title>
+</head>
+<body>
+    <h1>IT Enquiry Reported</h1>
+
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ object.author.profile }}</a>
+                    <small class="text-muted">{{ object.date_submitted }}</small>
+                </div>
+                <h2 class="article-title">{{ object.subject    }} Enquiry in Room {{object.name}}</h2>
+                <p class="article-content">{{ object.description }}</p>
+            </div>
+        </article>
+
+</body>
+</html>

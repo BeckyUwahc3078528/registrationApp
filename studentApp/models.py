@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -32,5 +32,9 @@ class Message(models.Model):
     def __str__(self):
 
         return f'{self.subject} Enquiry in {self.name}'
+    
+    def get_absolute_url(self):
+
+        return reverse('messageEnquiry_detail', kwargs = {'pk': self.pk})
 
     

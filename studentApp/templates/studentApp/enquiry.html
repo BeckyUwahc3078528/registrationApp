@@ -10,7 +10,7 @@
                         <a class="mr-2" href="#">{{ message.author.profile }}</a>
                         <small class="text-muted">{{ message.date_submitted }}</small>
                     </div>
-                    <h2><a class="article-title" href="#">{{ message }}</a></h2>
+                    <h2><a class="article-title" href="{% url 'messageEnquiry_detail' message.id %}">{{ message }}</a></h2>
                     <p class="article-content">{{ message.subject }}</p>
                 </div>
             </article>
