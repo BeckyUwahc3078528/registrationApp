@@ -11,7 +11,6 @@ urlpatterns = [
     path('', views.home, name = 'home'), 
     path('about/', views.about, name = 'about'), 
     path('contact/', views.submit_inquiry, name = 'submit_inquiry'), 
-    path('modules/', views.modules, name = 'modules'),
     path('inquiry/', views.submit_inquiry, name='submit_inquiry'),
     path('inquiry/success/', views.inquiry_success, name='inquiry_success'),
 
@@ -20,6 +19,8 @@ urlpatterns = [
     # path('messages/<int:pk>', PostDetailView.as_view(), name = 'messageEnquiry_detail'), 
     # path('message/new', PostCreateView.as_view(), name = 'message-create'),
     # path('message/<int:pk>/update/', PostUpdateView.as_view(), name = 'message-update'),
+
+    
 
   
     

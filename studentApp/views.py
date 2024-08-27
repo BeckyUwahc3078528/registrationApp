@@ -25,10 +25,6 @@ def contact(request):
 
   return render(request, 'studentApp/submit_inquiry.html', {'title': 'submit_inquiry'})
 
-def modules(request): 
-
-  return render(request, 'studentApp/modules.html', {'title': 'Modules'})
-
 def register(request): 
 
   return render(request, 'studentApp/register.html', {'title': 'register'})
