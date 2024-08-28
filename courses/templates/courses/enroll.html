@@ -1,14 +1,12 @@
 {% extends "studentApp/base.html" %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
-
-<div class="content-section">
+    <div class="content-section">
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Student Registration Form</legend>
+            <legend class="border-bottom mb-4">Enroll in a Module</legend>
             {{ form | crispy }}
         </fieldset>
         <div class="form-group">
@@ -21,4 +19,4 @@
         </small>
     </div>
 </div>
-{% endblock content %}
+{%endblock content%}
