@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm  
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, EnrollmentForm 
+from .models import Profile
+from courses.models import Course, Module
+from .models import Enrollment
+
 
 
 def register(request):
@@ -38,9 +42,34 @@ def profile(request):
             context = {'u_form': u_form, 'p_form': p_form, 'title': 'Student Profile'} 
             return render(request, 'users/profile.html', context) 
  
+def enroll_student(request):
+    if request.method == 'POST':
+        form = EnrollmentForm(request.POST)
+        if form.is_valid():
+            course = get_object_or_404(Course, id=request.POST.get('course_id'))
 
+            form.save()
+            return redirect('enroll_success')
+        else:
+            print(form.errors) 
+    else:
+        form = EnrollmentForm()
+    return render(request, 'courses/enroll.html', {'form': form})
 
+def enroll_success(request):
+    return render(request, 'courses/enroll_success.html')
 
+def register_module(request, module_id):
+    student = get_object_or_404(Profile, user=request.user)
+    module = get_object_or_404(Module, id=module_id)
+    student.register_module(module)
+    return redirect('courses:module_list')
+
+def unregister_module(request, module_id):
+    student = get_object_or_404(Profile, user=request.user)
+    module = get_object_or_404(Module, id=module_id)
+    student.unregister_module(module)
+    return redirect('courses:module_list')
 
 
 
