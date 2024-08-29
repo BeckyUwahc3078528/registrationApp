@@ -4,3 +4,36 @@ caren = carencloud
 The enquiry.html page displays list of enquiries - http://127.0.0.1:8000/enquiry/
 message_form.html holds the enquiry form - http://127.0.0.1:8000/message/new
 message_form.html displays each enquiry - http://127.0.0.1:8000/messages/2
+
+Errors
+Database errors, plus You have one unapplied migrations -  check apps migrations and delete untracked migrations
+
+0003_alter_module_course_enrollment.py 
+import django.db.models.deletion
+import django.utils.timezone
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('courses', '0002_course_delete_student'),
+        ('users', '0002_alter_profile_image'),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name='module',
+            name='course',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='modules', to='courses.course'),
+        ),
+        migrations.CreateModel(
+            name='Enrollment',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('enrollment_date', models.DateTimeField(default=django.utils.timezone.now)),
+                ('module', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='courses.module')),
+                ('student', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.profile')),
+            ],
+        ),
+    ]
