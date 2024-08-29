@@ -1,10 +1,6 @@
+{% extends "studentApp/base.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Registration - Modules</title>
-</head>
-<body>
+{%block content %}
     <h1>List of Courses and Modules</h1>
     <div>
     <h2>Computing</h2>
@@ -12,6 +8,7 @@
     <h4>Postgrad 1 year/2 years</h4>
     <h3>Cloud Computing</h3>
     <h3>Database Management</h3>
+    <h3>AI</h3>
 </div>
 <div>
 <h2>Engineering</h2>
@@ -53,6 +50,4 @@
 </div>
 
 
-
-</body>
-</html>
+{% endblock content %}
