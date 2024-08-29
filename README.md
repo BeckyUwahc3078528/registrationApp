@@ -1,2 +1,2 @@
 # registrationApp
-Application for student course registration 
+Application for student module registration 
