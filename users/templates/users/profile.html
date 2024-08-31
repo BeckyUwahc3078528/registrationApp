@@ -3,7 +3,7 @@
 {% extends "studentApp/base.html" %}
 
 {% load crispy_forms_tags %}
-{% load crispy_forms_tags %}
+
 {% block content %}
 
 <div class="content-section"> 
@@ -19,6 +19,10 @@
       <p class="text-secondary">{{user.username}}</p> 
 
       <p class="text-secondary">{{user.email}}</p> 
+
+      <p class="text-secondary">{{user.profile.enrolled_course}}</p> 
+
+      <p class="text-secondary">{{user.profile.view_enrolled_modules}}</p> 
 
     </div> 
 

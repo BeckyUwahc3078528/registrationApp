@@ -21,7 +21,7 @@
     <header class="site-header">
       <nav class="navbar custom-navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'home' %}">Student IT Services</a>
+          <a class="navbar-brand mr-4" href="{% url 'home' %}">HALLAMVERSITY</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
             aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,8 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
               <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-              <div class="dropdown">
+              <a class="nav-item nav-link" href="{% url 'courseList' %}">Courses</a>
+              <!-- <div class="dropdown">
                 <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false"
                   href="#"> Courses</a>
 
@@ -42,7 +43,7 @@
                   <a class="dropdown-item" href="#">Art & History</a>
 
                 </div>
-              </div>
+              </div> -->
               <a class="nav-item nav-link" href="{% url 'submit_inquiry' %}">Contact</a>
             </div>
             <!-- Navbar Right Side -->
@@ -50,7 +51,7 @@
 
               {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="#">View Enquiry</a>
+                <a class="nav-item nav-link" href="{% url 'enroll_student' %}">Register Modules</a>
 
                 <form method="post" id="frm_logout" action="#">
                   {% csrf_token %}
@@ -74,7 +75,7 @@
       </nav>
     </header>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md">
         {% if messages %}
         {% for message in messages %}
           <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -82,7 +83,7 @@
         {% endif %}
         {% block content %}{% endblock %}
       </div>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="content-section">
           <h3>General Information</h3>
           <p class='text-muted'>Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit
@@ -95,7 +96,7 @@
           </ul>
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- Remove the container if you want to extend the Footer to full width. -->
@@ -105,7 +106,7 @@
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white" style="background-color: #1c2331">
       <!-- Section: Social media -->
-      <section class="d-flex justify-content-between p-4" style="background-color: #65a077">
+      <section class="d-flex justify-content-between p-4" style="background-color: #E97451">
         <!-- Left -->
         <div class="me-5">
           <span>Get connected with us on social networks:</span>
