@@ -17,17 +17,10 @@ def about(request):
 
   return render(request, 'studentApp/about.html', {'title': 'About'})
 
-
-# def contact(request): 
-
-#   return render(request, 'studentApp/message_form.html', {'title': 'message-create'})
 def contact(request): 
 
   return render(request, 'studentApp/submit_inquiry.html', {'title': 'submit_inquiry'})
 
-def register(request): 
-
-  return render(request, 'studentApp/register.html', {'title': 'register'})
 
 def submit_inquiry(request):
   if request.method == 'POST':
@@ -42,13 +35,10 @@ def submit_inquiry(request):
 def inquiry_success(request):
     return render(request, 'studentApp/inquiry_sucess.html')
 
+def register(request): 
 
-# def enquiry(request):
-#    # Get all reported issues
-#   #Create a context dictionary to pass to the template
-#   #Render the report.html template with the context
-#   daily_enquiry = {'messages': Message.objects.all(), 'title': 'Enquiries Reported'}
-#   return render(request, 'studentApp/enquiry.html', daily_enquiry)
+  return render(request, 'studentApp/register.html', {'title': 'register'})
+
 
 
 

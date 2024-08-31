@@ -6,17 +6,27 @@ from users.models import Profile
 # from .forms import EnrollmentForm
 
 # Create your views here.
-def register_module(request, module_id):
-    module = Module.objects.get(id=module_id)
-    student = Profile.objects.get(user=request.user)
-    student.register_module(module)
-    return redirect('courses/registration.html')
+def course_list(request):
+    courses = Course.objects.all()
+    return render(request, 'courses/course_list.html', {'courses': courses})
 
-def unregister_module(request, module_id):
-    module = Module.objects.get(id=module_id)
+# View to show details of a specific course and its modules
+def course_detail(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
     student = Profile.objects.get(user=request.user)
-    student.unregister_module(module)
-    return redirect('studentApp/home.html')
+    return render(request, 'courses/course_detail.html', {'course': course, 'student': student})
+
+# def register_module(request, module_id):
+#     module = Module.objects.get(id=module_id)
+#     student = Profile.objects.get(user=request.user)
+#     student.register_module(module)
+#     return redirect('courses/registration.html')
+
+# def unregister_module(request, module_id):
+#     module = Module.objects.get(id=module_id)
+#     student = Profile.objects.get(user=request.user)
+#     student.unregister_module(module)
+#     return redirect('studentApp/home.html')
 
 
 # def enroll_student(request):

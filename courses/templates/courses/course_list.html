@@ -1,0 +1,25 @@
+{% extends "studentApp/base.html" %}
+{% block content %}
+    <h1>Courses</h1>
+    <ul>
+        {% for course in courses %}
+            <li>
+                <h2>{{ course.name }}</h2>
+                <p>{{ course.description }}</p>
+                <h3>Modules</h3>
+                <ul>
+                    {% for module in course.modules.all %}
+                        <li>
+                            <h4>{{ module.name }}</h4>
+                            <p>{{ module.description }}</p>
+                        </li>
+                    {% empty %}
+                        <li>No modules available</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% empty %}
+            <li>No courses available</li>
+        {% endfor %}
+    </ul>
+{%endblock content%}

@@ -1,0 +1,7 @@
+<!-- view_enrolled_modules.html -->
+<h2>Enrolled Modules for {{ student_name }}</h2>
+<ul>
+    {% for enrollment in enrollments %}
+        <li>{{ enrollment.module.name }} - Enrolled on {{ enrollment.enrollment_date }}</li>
+    {% endfor %}
+</ul>

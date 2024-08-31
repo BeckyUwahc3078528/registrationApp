@@ -8,8 +8,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('registration/', views.register_module, name='register_module'),
-    path('', views.unregister_module, name = 'unregister_module'),
+    # path('registration/', views.register_module, name='register_module'),
+    # path('', views.unregister_module, name = 'unregister_module'),
     # path('enroll/', views.enroll_student, name='enroll'),
     # path('modules/', views.ModuleListView.as_view(), name='module_list'),
 ]
