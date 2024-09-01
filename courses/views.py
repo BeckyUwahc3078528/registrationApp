@@ -1,6 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Course
+from django.contrib.auth.decorators import login_required
+from .models import Course,Module
 # from .models import ModuleRegistration
 from users.models import Profile
 from .forms import ModuleRegForm
@@ -28,12 +29,12 @@ def course_detail(request, course_id):
 #     student.unregister_module(module)
 #     return redirect('studentApp/home.html')
 
-
+@login_required 
 def registermodule_student(request):
     if request.method == 'POST':
         form = ModuleRegForm(request.POST)
         if form.is_valid():
-            course = get_object_or_404(Course, id=request.POST.get('course_id'))
+            module = get_object_or_404(Module, id=request.POST.get('module_code'))
 
             form.save()
             return redirect('registeModule_success')
