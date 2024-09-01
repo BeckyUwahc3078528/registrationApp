@@ -51,9 +51,9 @@
 
               {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="{% url 'enroll_student' %}">Register Modules</a>
+                <a class="nav-item nav-link" href="{% url 'registerModule' %}">Register Modules</a>
 
-                <form method="post" id="frm_logout" action="#">
+                <form method="post" id="frm_logout" action="{% url 'logout' %}">
                   {% csrf_token %}
                   <a class="nav-item nav-link" href="javascript:$('#frm_logout').submit();">Logout</a>
                 </form>

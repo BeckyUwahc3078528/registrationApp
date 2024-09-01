@@ -2,8 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
-from .models import Module
-from .models import Enrollment
+
 
 
 
@@ -29,14 +28,9 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
-class ModuleRegistrationForm(forms.Form):
-    modules = forms.ModelMultipleChoiceField(
-        queryset= Module.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=True
-    )
-
-class EnrollmentForm(forms.ModelForm):
-    class Meta:
-        model = Enrollment
-        fields = ['student', 'module']
+# class ModuleRegistrationForm(forms.Form):
+#     modules = forms.ModelMultipleChoiceField(
+#         queryset= Module.objects.all(),
+#         widget=forms.CheckboxSelectMultiple,
+#         required=True
+#     )

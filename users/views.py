@@ -2,11 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, EnrollmentForm 
-from .models import Profile
-from courses.models import Course, Module
-from .models import Enrollment
-from .forms import ModuleRegistrationForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
 
@@ -44,55 +40,41 @@ def profile(request):
             context = {'u_form': u_form, 'p_form': p_form, 'title': 'Student Profile'} 
             return render(request, 'users/profile.html', context) 
  
-# def enroll_student(request):
-#     if request.method == 'POST':
-#         form = EnrollmentForm(request.POST)
-#         if form.is_valid():
-#             course = get_object_or_404(Course, id=request.POST.get('course_id'))
 
-#             form.save()
-#             return redirect('enroll_success')
-#         else:
-#             print(form.errors) 
+
+# put back from her down
+# def register_modules(request):
+#     if request.method == 'POST':
+#         form = ModuleRegistrationForm(request.POST)
+#         if form.is_valid():
+#             modules = form.cleaned_data['modules']
+#             student = request.user.profile  # Assuming Student is linked to User
+#             for module in modules:
+#                 Enrollment.objects.get_or_create(student=student, module=module)
+#             return redirect('register_success')  # Redirect to a success page
 #     else:
-#         form = EnrollmentForm()
+#         form = ModuleRegistrationForm()
 #     return render(request, 'courses/enroll.html', {'form': form})
 
-def register_modules(request):
-    if request.method == 'POST':
-        form = ModuleRegistrationForm(request.POST)
-        if form.is_valid():
-            modules = form.cleaned_data['modules']
-            student = request.user.profile  # Assuming Student is linked to User
-            for module in modules:
-                Enrollment.objects.get_or_create(student=student, module=module)
-            return redirect('enroll_success')  # Redirect to a success page
-    else:
-        form = ModuleRegistrationForm()
-    return render(request, 'courses/enroll.html', {'form': form})
 
+# def register_module(request, module_id):
+#     student = get_object_or_404(Profile, user=request.user)
+#     module = get_object_or_404(Module, id=module_id)
+#     student.register_module(module)
+#     return redirect('courses:module_list')
 
-def enroll_success(request):
-    return render(request, 'courses/enroll_success.html')
+# def unregister_module(request, module_id):
+#     student = get_object_or_404(Profile, user=request.user)
+#     module = get_object_or_404(Module, id=module_id)
+#     student.unregister_module(module)
+#     return redirect('courses:module_list')
 
-def register_module(request, module_id):
-    student = get_object_or_404(Profile, user=request.user)
-    module = get_object_or_404(Module, id=module_id)
-    student.register_module(module)
-    return redirect('courses:module_list')
-
-def unregister_module(request, module_id):
-    student = get_object_or_404(Profile, user=request.user)
-    module = get_object_or_404(Module, id=module_id)
-    student.unregister_module(module)
-    return redirect('courses:module_list')
-
-@login_required
-def view_enrolled_modules(request):
-    student = request.user.profile  # Assuming Student is linked to User
-    enrollments = Enrollment.objects.filter(student=student)
-    student_name = student.user.get_full_name()
-    return render(request, 'users/view_enrolled_modules.html', {'enrollments': enrollments, 'student_name': student_name})
+# @login_required
+# def view_enrolled_modules(request):
+#     student = request.user.profile  # Assuming Student is linked to User
+#     enrollments = Enrollment.objects.filter(student=student)
+#     student_name = student.user.get_full_name()
+#     return render(request, 'users/view_enrolled_modules.html', {'enrollments': enrollments, 'student_name': student_name})
 
 
 
