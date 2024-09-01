@@ -4,8 +4,7 @@ from . import views
 from django.urls import path, include
 from django.contrib.auth import views as auth_views 
 # from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView
-from courses.views import course_list,course_detail
-
+from courses.views import course_list,course_detail,registermodule_student
 
 #app_name = 'studentApp' 
 
@@ -18,6 +17,7 @@ urlpatterns = [
     path('contact/', views.submit_inquiry, name = 'submit_inquiry'), 
     path('inquiry/', views.submit_inquiry, name='submit_inquiry'),
     path('inquiry/success/', views.inquiry_success, name='inquiry_success'),
+    path('registerModule/', registermodule_student, name='registerModule'),
 
     # path('enquiry/', views.enquiry, name = 'enquiry'), 
     # path('enquiry/', PostListView.as_view(), name = 'enquiry'), 

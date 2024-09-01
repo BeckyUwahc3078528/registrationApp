@@ -2,10 +2,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
+.inquiry{
+    margin: 0 auto;
+    width: 60%;
+}
+h1{
+    text-align: center;
+}
+
+</style>
+<div class = inquiry >
     <h1>Submit Your Inquiry</h1>
     <form method="post">
         {% csrf_token %}
         {{ form | crispy }}
         <button type="submit">Send Inquiry</button>
     </form>
+</div>
 {%endblock content%}

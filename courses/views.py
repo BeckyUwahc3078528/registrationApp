@@ -1,9 +1,9 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Course, Module
-# from .models import Enrollment
+from .models import Course
+# from .models import ModuleRegistration
 from users.models import Profile
-# from .forms import EnrollmentForm
+from .forms import ModuleRegForm
 
 # Create your views here.
 def course_list(request):
@@ -29,19 +29,19 @@ def course_detail(request, course_id):
 #     return redirect('studentApp/home.html')
 
 
-# def enroll_student(request):
-#     if request.method == 'POST':
-#         form = EnrollmentForm(request.POST)
-#         if form.is_valid():
-#             course = get_object_or_404(Course, id=request.POST.get('course_id'))
+def registermodule_student(request):
+    if request.method == 'POST':
+        form = ModuleRegForm(request.POST)
+        if form.is_valid():
+            course = get_object_or_404(Course, id=request.POST.get('course_id'))
 
-#             form.save()
-#             return redirect('enroll_success')
-#         else:
-#             print(form.errors) 
-#     else:
-#         form = EnrollmentForm()
-#     return render(request, 'courses/enroll.html', {'form': form})
+            form.save()
+            return redirect('registeModule_success')
+        else:
+            print(form.errors) 
+    else:
+        form = ModuleRegForm()
+    return render(request, 'courses/registerModule.html', {'form': form})
 
-# def enroll_success(request):
-#     return render(request, 'courses/enroll_success.html')
+def registeModule_successs(request):
+    return render(request, 'courses/registerModule_success.html')

@@ -1,7 +1,15 @@
 from django import forms
-# from .models import Enrollment
+from .models import Module, ModuleRegistration
 
-# class EnrollmentForm(forms.ModelForm):
+
+# class ModuleRegForm(forms.ModelForm):
 #     class Meta:
-#         model = Enrollment
+#         model = ModuleRegistration
 #         fields = ['student', 'module']
+
+class ModuleRegForm(forms.Form):
+    modules = forms.ModelMultipleChoiceField(
+        queryset= Module.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )

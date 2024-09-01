@@ -1,25 +1,52 @@
 {% extends "studentApp/base.html" %}
 {% block content %}
-    <h1>Courses</h1>
-    <ul>
-        {% for course in courses %}
+<style>
+    h1,
+    h3 {
+        text-align: left;
+        padding: 10px
+    }
+    .course_sidebar{
+        background-color: rgb(235, 204, 166);
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class = col-md-9>
+            <h1>Courses in Hallamversity</h1>
+        <ul>
+            {% for course in courses %}
             <li>
-                <h2>{{ course.name }}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a lectus in purus fermentum molestie
+                    ac sed eros. Ut sed felis quam. Cras non urna ut metus scelerisque rutrum. Sed consequat dui nibh,
+                    et accumsan lorem pretium in. Aliquam fringilla aliquam nulla, sagittis consequat felis lacinia ac.
+                    Proin enim neque, accumsan vel commodo eu, dictum quis quam. Vivamus quis tellus eget elit finibus
+                    euismod ac in augue. In hac habitasse platea dictumst.</p>
+                    <h3>{{ course.name }}</h3>
+                <p>
                 <p>{{ course.description }}</p>
                 <h3>Modules</h3>
                 <ul>
                     {% for module in course.modules.all %}
-                        <li>
-                            <h4>{{ module.name }}</h4>
-                            <p>{{ module.description }}</p>
-                        </li>
+                    <li>
+                        <h4>{{ module.name }}</h4>
+                        <p>{{ module.description }}</p>
+                    </li>
                     {% empty %}
-                        <li>No modules available</li>
+                    <li>No modules available</li>
                     {% endfor %}
                 </ul>
             </li>
-        {% empty %}
+            {% empty %}
             <li>No courses available</li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+        </div>
+        <div class = "col-md-3 course_sidebar">
+
+        </div>
+
+        
+    </div>
+</div>
 {%endblock content%}

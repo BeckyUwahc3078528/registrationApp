@@ -14,15 +14,24 @@
 
     <div class="media-body"> 
 
-      <h2 class="account-heading">{{user.profile}}</h2> 
+      <!-- <h2 class="account-heading">{{user.profile}}</h2>  -->
 
-      <p class="text-secondary">{{user.username}}</p> 
+      <p class="text-secondary"><h2>Username: {{user.username}}</h2></p> 
 
-      <p class="text-secondary">{{user.email}}</p> 
+      <p class="text-secondary">Email: {{user.email}}</p> 
 
-      <p class="text-secondary">{{user.profile.enrolled_course}}</p> 
+      <!-- <p class="text-secondary">Course of study: {{user.profile.enrolled_course}}</p> 
 
-      <p class="text-secondary">{{user.profile.view_enrolled_modules}}</p> 
+      <p class="text-secondary">{{user.profile.view_enrolled_modules}}</p> -->
+
+      <p class="text-secondary">Date of birth : {{user.profile.date_of_birth}}</p> 
+
+      <p class="text-secondary">Address : {{user.profile.address}}</p> 
+
+      <p class="text-secondary">City : {{user.profile.city}}</p> 
+
+      <p class="text-secondary">Address : {{user.profile.country}}</p> 
+
 
     </div> 
 
