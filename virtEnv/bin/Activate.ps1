@@ -247,12 +247,3 @@ Copy-Item -Path Env:PATH -Destination Env:_OLD_VIRTUAL_PATH
 $Env:PATH = "$VenvExecDir$([System.IO.Path]::PathSeparator)$Env:PATH"
 
 
-# export AZURE_DB_NAME='development' 
-
-# export AZURE_DB_HOST='moduleregdb.mysql.database.azure.com' 
-
-# export AZURE_DB_PORT='3306' 
-
-# export AZURE_DB_USER='c3078528modDbAdmin' 
-
-# export AZURE_DB_PASSWORD='Qwerty123' 
