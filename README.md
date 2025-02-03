@@ -10,4 +10,4 @@ This is a fork of the original project. Here are the changes that will be made:
 ## Setup
 
 To run the project, clone this repository:
-[Git clone] https://github.com/beckyuwah/Student-registration-app.git
+[Git clone](https://github.com/beckyuwah/Student-registration-app.git)
