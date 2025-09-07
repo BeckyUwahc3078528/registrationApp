@@ -12,14 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from django.urls import path, include 
-#from dotenv import load_dotenv #OPEN-FOR-DEPLOYMENT
-#import os #OPEN-FOR-DEPLOYMENT
+from dotenv import load_dotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-#dotenv_path = os.path.join(BASE_DIR, 'utility', '.env') #OPEN-FOR-DEPLOYMENT
-#load_dotenv(dotenv_path) #OPEN-FOR-DEPLOYMENT
+dotenv_path = os.path.join(BASE_DIR, 'utility', '.env')
+load_dotenv(dotenv_path)
 
 
 
@@ -28,29 +27,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zg05g^%a$ld5npmq4y1=67w*9fwx)#2yfxnh@*t_b(4-&ci!r4' #CLOSE-FOR-DEPLOYMENT
-#OPEN-FOR-DEPLOYMENT
-# SECRET_KEY = os.getenv('SECRET_KEY', 'I73wsRshQcW5RAo')
-# WEBSITE_HOSTNAME = os.getenv('WEBSITE_HOSTNAME', None) 
+SECRET_KEY = os.getenv('SECRET_KEY', 'I73wsRshQcW5RAo')
+WEBSITE_HOSTNAME = os.getenv('WEBSITE_HOSTNAME', None) 
 
-#DEBUG = None #OPEN-FOR-DEPLOYMENT ??
-
+DEBUG = None 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  #CLOSE-FOR-DEPLOYMENT
-ALLOWED_HOSTS = [] #CLOSE-FOR-DEPLOYMENT
-#OPEN-FOR-DEPLOYMENT
-# if DEBUG: 
+if DEBUG: 
 
-#     ALLOWED_HOSTS = [] 
+    ALLOWED_HOSTS = [] 
 
-# else: 
+else: 
 
-#     ALLOWED_HOSTS = [WEBSITE_HOSTNAME] 
+    ALLOWED_HOSTS = [WEBSITE_HOSTNAME] 
 
-#     CSRF_TRUSTED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}'] 
+    CSRF_TRUSTED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}'] 
 
-# CORS_ALLOWED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}']
+CORS_ALLOWED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}']
 
 
 # Application definition
@@ -69,8 +62,6 @@ INSTALLED_APPS = [
     'courses',
     'corsheaders'
 ]
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4' #CLOSE-FOR-DEPLOYMENT
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -108,25 +99,18 @@ WSGI_APPLICATION = 'registerApp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-#CLOSE-FOR-DEPLOYMENT
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
-
-#OPEN-FOR-DEPLOYMENT
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('DATABASE_ENGINE'),
-#         'NAME': os.getenv('DATABASE_NAME'),
-#         'USER': os.getenv('DATABASE_USER'),
-#         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-#         'HOST': os.getenv('DATABASE_HOST'),
-#         'PORT': os.getenv('DATABASE_PORT'),
-#     }
-# }
 
 
 # Password validation
@@ -163,53 +147,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-#FOR-NONE STAGE
 # STATIC_URL = 'static/'
 # MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_URL = '/media/'
 
-#CLOSE-FOR-DEPLOYMENT
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-   
-]
 
-STATIC_URL = 'static/'
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#OPEN-FOR-DEPLOYMENT
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+AZURE_SA_NAME = os.environ['AZURE_SA_NAME']
+AZURE_SA_KEY = os.environ['AZURE_SA_KEY']
 
-#OPEN-FOR-DEPLOYMENT
-# AZURE_SA_NAME = os.environ['AZURE_SA_NAME']
-# AZURE_SA_KEY = os.environ['AZURE_SA_KEY']
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.azure_storage.AzureStorage",
+        "OPTIONS": {
+            "account_name": AZURE_SA_NAME,
+            "account_key": AZURE_SA_KEY,
+            "azure_container": "media",
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "storages.backends.azure_storage.AzureStorage",
+        "OPTIONS": {
+            "account_name": AZURE_SA_NAME,
+            "account_key": AZURE_SA_KEY,
+            "azure_container": "static",
+        },
+    },
+}
 
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.azure_storage.AzureStorage",
-#         "OPTIONS": {
-#             "account_name": AZURE_SA_NAME,
-#             "account_key": AZURE_SA_KEY,
-#             "azure_container": "media",
-#         },
-#     },
-#     "staticfiles": {
-#         "BACKEND": "storages.backends.azure_storage.AzureStorage",
-#         "OPTIONS": {
-#             "account_name": AZURE_SA_NAME,
-#             "account_key": AZURE_SA_KEY,
-#             "azure_container": "static",
-#         },
-#     },
-# }
+STATIC_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/static/'
 
-
-
-#OPEN-FOR-DEPLOYMENT
-#STATIC_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/static/'
-#MEDIA_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/media/'
+MEDIA_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
